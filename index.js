@@ -1,32 +1,44 @@
-'use strict';
+// @flow
+"use strict";
 
-// TODOdd: type this function
-// TODOdd: refactor this function
-module.exports = (entries, {entriesAreCompleteWithoutMedia} = {}) => {
-	if (entriesAreCompleteWithoutMedia === true) {
-		return {completeEntries: entries, incompleteEntries: []};
+/*::
+type Entry = { media?: Array< any > | {} };
+*/
+const foo /*: 
+    (
+        Array< Entry >,
+        options?: { entriesAreCompleteWithoutMedia: boolean }
+    ) => {
+		completeEntries: Array< Entry >,
+		incompleteEntries: Array< Entry >
 	}
+*/ = (
+  entries,
+  { entriesAreCompleteWithoutMedia } = {}
+) => {
+  if (entriesAreCompleteWithoutMedia === true) {
+    return { completeEntries: entries, incompleteEntries: [] };
+  }
 
-	return entries.reduce(
-		(acc, entry) => {
-			if (Array.isArray(entry.media)) {
-				if (entry.media.length > 0) {
-					acc.completeEntries.push(entry);
-				} else {
-					acc.incompleteEntries.push(entry);
-				}
+  const completeEntry /*: (Entry) => boolean */ = (entry) =>
+    (Array.isArray(entry.media) && entry.media.length > 0) ||
+    Object.keys(entry.media || {}).length > 0;
 
-				return acc;
-			}
+  const completeEntries = [];
+  const incompleteEntries = [];
 
-			if (Object.keys(entry.media || {}).length > 0) {
-				acc.completeEntries.push(entry);
-			} else {
-				acc.incompleteEntries.push(entry);
-			}
+  for (const entry of entries) {
+    if (completeEntry(entry)) {
+      completeEntries.push(entry);
+    } else {
+      incompleteEntries.push(entry);
+    }
+  }
 
-			return acc;
-		},
-		{completeEntries: [], incompleteEntries: []}
-	);
+  return {
+    completeEntries,
+    incompleteEntries,
+  };
 };
+
+module.exports = foo;

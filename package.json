@@ -1,0 +1,27 @@
+{
+  "name": "1602950594",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typedd/1602950594.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/typedd/1602950594/issues"
+  },
+  "homepage": "https://github.com/typedd/1602950594#readme",
+  "devDependencies": {
+    "flow-bin": "^0.136.0",
+    "prettier": "2.1.2"
+  },
+  "dependencies": {
+    "mocha": "^8.2.0"
+  }
+}
