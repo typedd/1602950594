@@ -6,10 +6,11 @@ const foo = require("..");
 describe("asdf", function () {
   // $FlowFixMe
   it("asdf", function () {
-        const entries = [{ media: [] }];
+    const entries = [{ media: [] }];
     const result = foo(entries, { entriesAreCompleteWithoutMedia: true });
     assert.deepEqual(result, {
-      completeEntries: entries, incompleteEntries: [],
+      completeEntries: entries,
+      incompleteEntries: [],
     });
   });
   // $FlowFixMe
