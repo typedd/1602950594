@@ -1,7 +1,7 @@
 'use strict';
 
-// TODOdd: type this function
-// TODOdd: refactor this function
+// TODO: type this function
+// TODO: refactor this function
 module.exports = (entries, {entriesAreCompleteWithoutMedia} = {}) => {
 	if (entriesAreCompleteWithoutMedia === true) {
 		return {completeEntries: entries, incompleteEntries: []};
